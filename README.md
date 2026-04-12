@@ -23,15 +23,7 @@ src/
  │    └── TaskItem.jsx
  ├── App.jsx
  └── main.jsx
-Installation and Setup
-Clone the repository:
-git clone https://github.com/your-username/todo-react-app.git
-Navigate into the project folder:
-cd todo-react-app
-Install dependencies:
-npm install
-Run the development server:
-npm run dev
+
 Live Demo
 
 To be Added
