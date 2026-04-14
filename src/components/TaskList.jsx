@@ -1,27 +1,17 @@
-import { useRef,useEffect } from "react";
 import { TaskItems } from "./TaskItems";
 
-export function TaskList({todoList}){ 
-    const todoListRef = useRef(null);
-
-    useEffect(()=>{
-        const containerElem = todoListRef.current;
-        if(containerElem){
-            containerElem.scrollTop = containerElem.scrollHeight; 
-        }
-    },[todoList])
-    return(
-        <div 
-        className="todo-list-container"
-        ref ={todoListRef}>  
-            {todoList.map((todoList) => {
-                return(
-                    <TaskItems 
-                        message = {todoList.message}
-                        key = {todoList.id}
+export function TaskList({ todoList }) {
+    return (
+        <>
+            {todoList.map((task) => (
+                <tr key={task.id}>
+                    <TaskItems
+                        message={task.message}
+                        dueDate={task.dueDate}
+                        status={task.status}
                     />
-                );
-            })} 
-        </div>
+                </tr>
+            ))}
+        </>
     );
 }

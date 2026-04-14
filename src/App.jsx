@@ -11,11 +11,22 @@ function App() {
         todoList={todoList}
         setTodoList={setTodoList} 
       />
-      <TaskList 
-        todoList={todoList}
-        setTodoList={setTodoList} 
-      />
-    
+      <table>
+        <thead>
+          <tr>
+            <th><b>Aa</b> Task name</th>
+            <th>Status</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <TaskList 
+            todoList={todoList}
+            setTodoList={setTodoList} 
+          />
+        </tbody>
+      </table>
     </>
   );
 }
