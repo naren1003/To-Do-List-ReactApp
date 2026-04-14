@@ -1,3 +1,20 @@
-.item-container{
-    display:flex;
+.Pending{
+    background-color: rgb(246, 43, 43);
+    border-radius: 20px;
+    text-align: center;
+    padding:0px 15px;
+}
+
+.in-progress{
+    background-color: rgb(53, 53, 255);
+    border-radius: 20px;
+    text-align: center;
+    padding:0px 15px;
+}
+
+.Completed{
+    background-color: rgb(51, 255, 51);
+    border-radius: 20px;
+    text-align: center;
+    padding:0px 15px;
 }

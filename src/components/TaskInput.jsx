@@ -4,6 +4,7 @@ import './TaskInput.css';
 export function TaskInput( { todoList , setTodoList }){ 
     const [inputText, setInputText] = useState('');
     const [dueDate, setDueDate] = useState(''); 
+    const [status, setStatus] = useState("Pending");
 
     function saveInputText(event){
         setInputText(event.target.value);
@@ -23,12 +24,12 @@ export function TaskInput( { todoList , setTodoList }){
     const newTodo = {
         message: inputText,
         dueDate: dueDate,
-        status: "Pending",
+        status: status,
         id: crypto.randomUUID()
     };
 
     setTodoList([...todoList, newTodo]);
-
+    setStatus('Pending');
     setInputText('');
     setDueDate('');
 }
@@ -49,6 +50,14 @@ export function TaskInput( { todoList , setTodoList }){
                     className="name-input"
                     onKeyDown = {keyPressed}
                 />
+                <select
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    >
+                    <option value="Pending">Pending</option>
+                    <option value="in-progress">in-progess</option>
+                    <option value="Completed">Completed</option>
+                </select>
                 <input
                     type="date"
                     value={dueDate}
