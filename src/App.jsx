@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { TaskInput } from './components/TaskInput';
-import {TaskList} from './components/TaskList';
+import { TaskList } from './components/TaskList';
 import './App.css'
 
 function App() {
-  const [todoList,setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState([]);
   return (
     <>
       <TaskInput
         todoList={todoList}
-        setTodoList={setTodoList} 
+        setTodoList={setTodoList}
       />
       <table>
         <thead>
@@ -17,13 +17,14 @@ function App() {
             <th><b>Aa</b> Task name</th>
             <th>Status</th>
             <th>Due Date</th>
+            <th>Action</th>
           </tr>
         </thead>
 
         <tbody>
-          <TaskList 
+          <TaskList
             todoList={todoList}
-            setTodoList={setTodoList} 
+            setTodoList={setTodoList}
           />
         </tbody>
       </table>

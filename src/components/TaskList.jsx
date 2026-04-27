@@ -1,6 +1,11 @@
 import { TaskItems } from "./TaskItems";
 
-export function TaskList({ todoList }) {
+export function TaskList({ todoList, setTodoList }) {
+    function handleDelete(id) {
+        setTodoList(prev =>
+            prev.filter(task => task.id !== id)
+        );
+    }
     return (
         <>
             {todoList.map((task) => (
@@ -10,8 +15,11 @@ export function TaskList({ todoList }) {
                         dueDate={task.dueDate}
                         status={task.status}
                     />
+                    <button onClick={() => handleDelete(task.id)}>
+                        Delete
+                    </button>
                 </tr>
             ))}
         </>
     );
-}
+} 
