@@ -1,46 +1,83 @@
-To-Do List Web App
+# Task Tracker
 
-A modern and responsive To-Do List application built using React and Vite. This application allows users to manage their daily tasks efficiently with a simple and intuitive interface, along with persistent data storage.
+A simple React to-do list app for tracking tasks, statuses, and due dates. Tasks are saved in the browser with `localStorage`, so they stay available after refreshing the page.
 
-Features
-Add new tasks
-Edit existing tasks
-Delete tasks
-Mark tasks as completed
-Search tasks
-Filter tasks (All / Completed / Pending)
-Local storage support (data persists after refresh)
-Responsive design
-Tech Stack
-Frontend: React (Vite)
-Styling: CSS
-Storage: Browser Local Storage
-Project Structure
+## Features
+
+- Add new tasks with a name, status, and optional due date
+- Edit existing task details
+- Cancel edits without saving changes
+- Delete tasks
+- Track task status as `Pending`, `In Progress`, or `Completed`
+- Persist tasks in browser local storage
+- Empty-state message when there are no tasks
+- Responsive layout for smaller screens
+
+## Tech Stack
+
+- React
+- Vite
+- CSS
+- Browser `localStorage`
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Run lint checks:
+
+```bash
+npm run lint
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```text
 src/
- ├── components/
- │    ├── TaskInput.jsx
- │    ├── TaskList.jsx
- │    └── TaskItem.jsx
- ├── App.jsx
- └── main.jsx
+  components/
+    TaskInput.jsx
+    TaskInput.css
+    TaskList.jsx
+    TaskList.css
+    TaskItems.jsx
+    TaskItems.css
+  App.jsx
+  App.css
+  index.css
+  main.jsx
+```
 
-Live Demo
+## Future Improvements
 
-To be Added
+- Search and filter tasks
+- Task priority levels
+- Due date sorting
+- Reminder notifications
+- Dark/light theme toggle
+- Backend sync for multi-device access
 
-Screenshots
-To be Added
-
-Future Improvements
-Dark mode
-Due dates and reminders
-Task priority levels
-User authentication
-Backend integration (Flask or Node.js)
-Notes
-
-This project demonstrates core frontend concepts such as component-based architecture, state management, and dynamic UI updates using React.
-
-Author
+## Author
 
 Narendra G S
