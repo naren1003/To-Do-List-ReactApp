@@ -13,29 +13,47 @@ export function TaskItems({
   const [msg, setMsg] = useState(message);
   const [stat, setStat] = useState(status);
   const [date, setDate] = useState(dueDate);
-
   const [editing, setEditing] = useState(false);
 
+  function resetDraft() {
+    setMsg(message);
+    setStat(status);
+    setDate(dueDate);
+  }
+
   function handleEditClick() {
+    resetDraft();
+    setEditing(true);
+  }
 
-    if (editing) {
+  function handleSaveClick() {
+    if (!msg.trim()) return;
 
-      const updatedTodos = todoList.map((task) => {
-        if (task.id === id) {
-          return {
-            ...task,
-            message: msg,
-            status: stat,
-            dueDate: date
-          };
-        }
-        return task;
-      });
+    const updatedTodos = todoList.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          message: msg.trim(),
+          status: stat,
+          dueDate: date
+        };
+      }
+      return task;
+    });
 
-      setTodoList(updatedTodos);
+    setTodoList(updatedTodos);
+    setEditing(false);
+  }
+
+  function handleCancelClick() {
+    resetDraft();
+    setEditing(false);
+  }
+
+  function handleEditKeyDown(event) {
+    if (event.key === 'Escape') {
+      handleCancelClick();
     }
-
-    setEditing(prev => !prev);
   }
 
   return (
@@ -45,11 +63,8 @@ export function TaskItems({
           <input
             value={msg}
             onChange={(e) => setMsg(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Escape") {
-                setMsg(message);
-              }
-            }}
+            onKeyDown={handleEditKeyDown}
+            aria-label={`Edit task name for ${message}`}
           />
         ) : (
           msg
@@ -61,6 +76,8 @@ export function TaskItems({
           <select
             value={stat}
             onChange={(e) => setStat(e.target.value)}
+            onKeyDown={handleEditKeyDown}
+            aria-label={`Edit status for ${message}`}
           >
             <option value="Pending">Pending</option>
             <option value="in-progress">In Progress</option>
@@ -77,6 +94,8 @@ export function TaskItems({
             type="date"
             value={date || ""}
             onChange={(e) => setDate(e.target.value)}
+            onKeyDown={handleEditKeyDown}
+            aria-label={`Edit due date for ${message}`}
           />
         ) : (
           date || "-"
@@ -85,9 +104,31 @@ export function TaskItems({
 
      
       <td>
-        <button onClick={handleEditClick}>
-          {editing ? "Save" : "Edit"}
-        </button>
+        {editing ? (
+          <div className="action-group">
+            <button
+              onClick={handleSaveClick}
+              disabled={!msg.trim()}
+              aria-label={`Save ${message}`}
+            >
+              Save
+            </button>
+            <button
+              className="secondary-btn"
+              onClick={handleCancelClick}
+              aria-label={`Cancel editing ${message}`}
+            >
+              Cancel
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={handleEditClick}
+            aria-label={`Edit ${message}`}
+          >
+            Edit
+          </button>
+        )}
       </td>
     </>
   );

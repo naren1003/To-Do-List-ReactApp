@@ -1,8 +1,49 @@
-.Heading{
-    margin:0;
-    padding:0;
+.task-input-section {
+    width: min(1080px, calc(100% - 32px));
+    margin: 56px auto 24px;
 }
 
-.Heading-container{
-    margin:60px;
+.Heading {
+    margin: 0;
+    padding: 0;
+    font-size: clamp(2rem, 7vw, 4.5rem);
+    line-height: 0.95;
+}
+
+.Heading-container {
+    margin-bottom: 24px;
+}
+
+.Heading-subtitle {
+    margin: 10px 0 0;
+    color: rgb(181, 190, 206);
+}
+
+.task-form {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) 170px 170px auto;
+    gap: 12px;
+    align-items: center;
+}
+
+.name-input {
+    width: 100%;
+}
+
+.Add-btn {
+    min-width: 84px;
+}
+
+@media (max-width: 760px) {
+    .task-input-section {
+        margin-top: 32px;
+    }
+
+    .task-form {
+        grid-template-columns: 1fr;
+    }
+
+    .Add-btn {
+        width: 100%;
+    }
 }

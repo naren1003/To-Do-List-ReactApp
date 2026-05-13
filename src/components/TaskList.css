@@ -1,5 +1,14 @@
-.tasklist-container{
-    display: flex;
-    gap: 20px;
+.empty-state {
+    padding: 28px 16px;
+    color: rgb(181, 190, 206);
+    text-align: center;
+}
+
+.danger-btn {
+    background-color: rgb(190, 58, 69);
+}
+
+.danger-btn:hover {
+    background-color: rgb(214, 73, 85);
 }
 

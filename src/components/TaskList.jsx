@@ -1,4 +1,5 @@
 import { TaskItems } from "./TaskItems";
+import './TaskList.css';
 
 export function TaskList({ todoList, setTodoList }) {
     function handleDelete(id) {
@@ -6,6 +7,17 @@ export function TaskList({ todoList, setTodoList }) {
             prev.filter(task => task.id !== id)
         );
     }
+
+    if (todoList.length === 0) {
+        return (
+            <tr>
+                <td className="empty-state" colSpan="5">
+                    No tasks yet. Add one above to get started.
+                </td>
+            </tr>
+        );
+    }
+
     return (
         <>
             {todoList.map((task) => (
@@ -19,7 +31,11 @@ export function TaskList({ todoList, setTodoList }) {
                         setTodoList={setTodoList}
                     />
                     <td>
-                        <button onClick={() => handleDelete(task.id)}>
+                        <button
+                            className="danger-btn"
+                            onClick={() => handleDelete(task.id)}
+                            aria-label={`Delete ${task.message}`}
+                        >
                             Delete
                         </button>
                     </td>
