@@ -11,9 +11,12 @@ export function TaskList({ todoList, setTodoList }) {
             {todoList.map((task) => (
                 <tr key={task.id}>
                     <TaskItems
+                        id={task.id}
                         message={task.message}
                         dueDate={task.dueDate}
                         status={task.status}
+                        todoList={todoList}
+                        setTodoList={setTodoList}
                     />
                     <td>
                         <button onClick={() => handleDelete(task.id)}>
