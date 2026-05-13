@@ -15,9 +15,11 @@ export function TaskList({ todoList, setTodoList }) {
                         dueDate={task.dueDate}
                         status={task.status}
                     />
-                    <button onClick={() => handleDelete(task.id)}>
-                        Delete
-                    </button>
+                    <td>
+                        <button onClick={() => handleDelete(task.id)}>
+                            Delete
+                        </button>
+                    </td>
                 </tr>
             ))}
         </>

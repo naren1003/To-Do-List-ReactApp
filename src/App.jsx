@@ -1,10 +1,27 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { TaskInput } from './components/TaskInput';
 import { TaskList } from './components/TaskList';
 import './App.css'
 
 function App() {
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState(()=>{
+
+    const savedTodos = localStorage.getItem('todos');
+
+    if(savedTodos){
+      return JSON.parse(savedTodos);
+    }
+
+    return [];
+
+  });
+
+  useEffect(()=>{
+    localStorage.setItem(
+      'todos',
+      JSON.stringify(todoList)
+    );
+  },[todoList]);
   return (
     <>
       <TaskInput
